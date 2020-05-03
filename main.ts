@@ -85,11 +85,17 @@ e . e e . . e e . e e e . e e .
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.setAction(mySprite2, ActionKind.walking)
 })
+controller.left.onEvent(ControllerButtonEvent.Released, function () {
+    animation.setAction(mySprite2, ActionKind.Idle)
+})
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite, location) {
     game.over(true, effects.hearts)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.setAction(mySprite2, ActionKind.walking)
+})
+controller.right.onEvent(ControllerButtonEvent.Released, function () {
+    animation.setAction(mySprite2, ActionKind.Idle)
 })
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location) {
     info.changeLifeBy(-1)
@@ -198,6 +204,94 @@ anim.addAnimationFrame(img`
 . . . . . . e e e . . . e . . . . . . . 
 . . . . . . . . . . . . e e e . . . . . 
 `)
-forever(function () {
-	
-})
+let idle = animation.createAnimation(ActionKind.Idle, 200)
+animation.attachAnimation(mySprite2, idle)
+idle.addAnimationFrame(img`
+. . . . . . . e e e e e e e . . . . . . 
+. . . . . . e e e e e e e e e . . . . . 
+. . . . . e e e e e e e e e e e . . . . 
+. . . . e e e e e e e e e e e e e . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . 4 f f 4 4 4 f f 4 . . . . . 
+. . . . . . 4 f f 4 4 4 f f 4 . . . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . 4 f 4 4 4 4 4 f 4 . . . . . 
+. . . . . . 4 4 f f f f f 4 4 . . . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . . f f f e e e e . . . . . . 
+. . . . . . . e f b b b e e . . . . . . 
+. . . . . e e e e b e b e e e e . . . . 
+. . . . . e . e e b b b f e . e . . . . 
+. . . . . e . e e e e f f f . e . . . . 
+. . . . . . . e e e e e f f . . . . . . 
+. . . . . . . . e . . . e . . . . . . . 
+. . . . . . . . e . . . e . . . . . . . 
+. . . . . . e e e . . . e e e . . . . . 
+`)
+idle.addAnimationFrame(img`
+. . . . . . . . . . . . . . . . . . . . 
+. . . . . . . e e e e e e e . . . . . . 
+. . . . . . e e e e e e e e e . . . . . 
+. . . . . e e e e e e e e e e e . . . . 
+. . . . e e e e e e e e e e e e e . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . 4 f f 4 4 4 f f 4 . . . . . 
+. . . . . . 4 f f 4 4 4 f f 4 . . . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . 4 f 4 4 4 4 4 f 4 . . . . . 
+. . . . . . 4 4 f f f f f 4 4 . . . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . . e f b b b e e . . . . . . 
+. . . . . e e e e b e b e e e e . . . . 
+. . . . . e . e e b b b f e . e . . . . 
+. . . . . e . e e e e f f f . e . . . . 
+. . . . . . . e e e e e f f . . . . . . 
+. . . . . . . . e . . . e . . . . . . . 
+. . . . . . . . e . . . e . . . . . . . 
+. . . . . . e e e . . . e e e . . . . . 
+`)
+idle.addAnimationFrame(img`
+. . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . 
+. . . . . . . e e e e e e e . . . . . . 
+. . . . . . e e e e e e e e e . . . . . 
+. . . . . e e e e e e e e e e e . . . . 
+. . . . e e e e e e e e e e e e e . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . 4 f f 4 4 4 f f 4 . . . . . 
+. . . . . . 4 f f 4 4 4 f f 4 . . . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . 4 f 4 4 4 4 4 f 4 . . . . . 
+. . . . . . 4 4 f f f f f 4 4 . . . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . . e f b b b e e . . . . . . 
+. . . . . e e e e b e b e e e e . . . . 
+. . . . . e . e e b b b f e . e . . . . 
+. . . . . e . e e e e f f f . e . . . . 
+. . . . . . . e e e e e f f . . . . . . 
+. . . . . . . . e . . . e . . . . . . . 
+. . . . . . e e e . . . e e e . . . . . 
+`)
+idle.addAnimationFrame(img`
+. . . . . . . . . . . . . . . . . . . . 
+. . . . . . . e e e e e e e . . . . . . 
+. . . . . . e e e e e e e e e . . . . . 
+. . . . . e e e e e e e e e e e . . . . 
+. . . . e e e e e e e e e e e e e . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . 4 f f 4 4 4 f f 4 . . . . . 
+. . . . . . 4 f f 4 4 4 f f 4 . . . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . 4 f 4 4 4 4 4 f 4 . . . . . 
+. . . . . . 4 4 f f f f f 4 4 . . . . . 
+. . . . . . 4 4 4 4 4 4 4 4 4 . . . . . 
+. . . . . . . e f b b b e e . . . . . . 
+. . . . . e e e e b e b e e e e . . . . 
+. . . . . e . e e b b b f e . e . . . . 
+. . . . . e . e e e e f f f . e . . . . 
+. . . . . . . e e e e e f f . . . . . . 
+. . . . . . . . e . . . e . . . . . . . 
+. . . . . . . . e . . . e . . . . . . . 
+. . . . . . e e e . . . e e e . . . . . 
+`)
+animation.setAction(mySprite2, ActionKind.Idle)

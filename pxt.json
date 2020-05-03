@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "animation": "*"
+        "animation": "*",
+        "adventure travle ": "github:rotoslinger/adventure-travle-#master"
     },
     "files": [
         "main.blocks",
