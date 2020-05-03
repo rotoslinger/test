@@ -1,8 +1,9 @@
 {
-    "name": "TEST",
+    "name": "Traveler money",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "animation": "*"
     },
     "files": [
         "main.blocks",
